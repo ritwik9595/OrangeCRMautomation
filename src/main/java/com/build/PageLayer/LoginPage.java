@@ -2,6 +2,7 @@ package com.build.PageLayer;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.time.Duration;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -14,14 +15,15 @@ import com.build.TestBase.TestBase;
 public class LoginPage extends TestBase {
 
 
-	@FindBy(xpath="//input[@name='username")
+	@FindBy(xpath="//input[@class='oxd-input oxd-input--active' and @name='username']")
 	WebElement username;
 	
-	@FindBy(xpath="//input[@name='password")
+	@FindBy(xpath="//input[@name='password']")
 	WebElement password;
 	
 	@FindBy(xpath="//button[@class='oxd-button oxd-button--medium oxd-button--main orangehrm-login-button']")
 	WebElement button;
+
 	
 	
 	public LoginPage()throws FileNotFoundException {
@@ -36,8 +38,10 @@ public class LoginPage extends TestBase {
 		return driver.getTitle();
 	}
 
-	public HomePage login(String un, String pwd) throws FileNotFoundException {
+	public HomePage login(String un, String pwd) throws Exception {
 		
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(25));
+
 		username.sendKeys(un);
 		password.sendKeys(pwd);
 		button.click();

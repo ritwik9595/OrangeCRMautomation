@@ -26,12 +26,12 @@ public class LoginTest extends TestBase {
 	@Test(priority = 1)
 	public void titleTest() {
 		String title=loginpage.validateLoginPageTitle();
-		Assert.assertEquals(title, "ABCD");	
+		Assert.assertEquals(title, "OrangeHRM");	
 		System.out.println(title);
 	}
 	
 	@Test(priority = 2)
-	public void Logintest() throws FileNotFoundException {
+	public void Logintest() throws Exception {
 		homepage= loginpage.login(prop.getProperty("username"), prop.getProperty("password"));
 	
 	}
